@@ -1,9 +1,12 @@
-const gameReducer = (state={}, {type, payload}) =>{
-    if(type === "UPDATE_GAME"){
-        return {name:payload};
-    }
+import {UPDATE_GAME} from '../actions/gameActions.js';
 
-    return state;
+const gameReducer = (state={}, {type, payload}) =>{
+    switch(type){
+    case UPDATE_GAME:
+        return {name:payload};
+    default:
+        return state;
+    }
 };
 
 export default gameReducer;

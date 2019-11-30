@@ -1,24 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import store from "./store/index.js";
+import update_person from "./store/actions/personActions.js";
+import update_game from "./store/actions/gameActions.js";
+
+
+let updatePerson = () => {
+    return store.dispatch(update_person);
+}
+
+let updateGame = () =>{
+    return store.dispatch(update_game);
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1> Redux Tutorial </h1>
+        Person Name: {store.getState().person.name}
+        <button onClick={updatePerson}>Update Person </button>
+        <br/>
+        game Name: {store.getState().game.name}
+        <button onClick={updateGame}>Update Game </button>
+        <br/>
+        
+      </div>
+      
     </div>
   );
 }

@@ -9,6 +9,7 @@ const InitialStates = {
     person: {name: "Sarthak"}
 };
 
-const store= createStore(AllReducers, InitialStates);
+const store= createStore(AllReducers, InitialStates,
+                         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;
