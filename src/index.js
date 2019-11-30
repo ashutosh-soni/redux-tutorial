@@ -3,36 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-import {createStore, combineReducers} from "redux";
-
-const personReducer = (state={}, {type, payload}) =>{
-    if(type === "UPDATE_PERSON"){
-        return {name:payload};
-    }
-    return state;
-};
-
-const gameReducer = (state={}, {type, payload}) =>{
-    if(type === "UPDATE_GAME"){
-        return {name:payload};
-    }
-
-    return state;
-};
-
-const AllReducers = combineReducers({game:gameReducer, person:personReducer});
-const InitialStates = {
-    game: {name: "Football"},
-    person: {name: "Sarthak"}
-};
-
-
-const store= createStore(AllReducers, InitialStates);
-console.log(store.getState());
-
-store.dispatch({type:"UPDATE_PERSON", payload:"bitfumes"});
-console.log(store.getState());
+import store from "./store/index.js";
 
 
 
