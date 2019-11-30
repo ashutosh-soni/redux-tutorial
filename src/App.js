@@ -5,6 +5,7 @@ import store from "./store/index.js";
 import update_person from "./store/actions/personActions.js";
 import update_game from "./store/actions/gameActions.js";
 import {connect} from "react-redux";
+import fetch_user from './store/actions/usersActions.js';
 
 
 function App(props) {
@@ -18,7 +19,14 @@ function App(props) {
             game Name: {props.game.name}
             <button onClick={props.updateGame}>Update Game </button>
             <br/>
+            Users: <button onClick= {props.fetchUsers}> Fetch Users</button>
+            <br/>
+            {
+                props.users.length === 0 ? <p>No User Found</p>:
+                props.users.map(user => <p> {user.id} - {user.first_name} - {user.email}</p>)
 
+            }
+            
           </div>
 
         </div>
@@ -28,14 +36,17 @@ function App(props) {
 const mapStateToProps = state => {
     return {
         game: state.game,
-        person: state.person
+        person: state.person,
+        users:state.users
+        
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         updateGame: () =>{dispatch(update_game);},
-        updatePerson: () => {dispatch(update_person);}
+        updatePerson: () => {dispatch(update_person);},
+        fetchUsers: () => {dispatch(fetch_user);}
     };
 };
 
